@@ -41,12 +41,12 @@ while turn<=9 and game==True:   #
   if turn % 2 ==1:                      #tour impair alors mon player O joue
     print(f"{playerO} à ton tour !")
     name_player= playerO
-    symbole="O"
+    symbol="O"
 
   elif turn % 2==0:                     # tour pair c est mon player X
     print(f"{playerX} à ton tour !")
     name_player=playerX
-    symbole="X"
+    symbol="X"
 
 
   choice=int(input("Choisis ta case :")) # je definis le choix du joueur pour qu il soit bien compris dans ma grille
@@ -62,22 +62,19 @@ while turn<=9 and game==True:   #
   if number[position] in ("X", "O"):
     print("Case déjà prise")
 
-  number[position] = symbole
+  number[position] = symbol
 
   board(number)
   turn+=1
 
-  combo= [(0,1,2), (3,4,5),(6,7,8),(0,3,6), (1,4,7), (2,5,8),(0,4,8), (2,4,6)] # mais combi gagnate
+  combo= [(0,1,2), (3,4,5),(6,7,8),(0,3,6), (1,4,7), (2,5,8),(0,4,8), (2,4,6)] # mes combi gagnate
 
+  def winner(board, symbol):
+    for a, b, c in combo:
+        if board[a] == symbol and board[b] == symbol and board[c] == symbol:
+            return True
+    return False
 
-  for a,b,c in combo:
-    if number[a]==number[b]==number[c]==symbole:
-      print(f"Bravo {name_player}")
-      game=False
-      break
-    if game:
-      break
-
-
-
-
+  if winner(number, symbol):
+      print(f"Bravo {name_player} tu as gagné !")
+      game = False
