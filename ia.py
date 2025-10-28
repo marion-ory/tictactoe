@@ -68,6 +68,7 @@ while turn<=9 and game==True:                                        #stop after
   position = int(choice)-1                                            # convert in 1 to 9 because python count from 0 to 8
   if number[position] in ("X", "O"):                                  # cells is already occupied
       print("Case déjà prise")
+      continue
 
   number[position] = symbol                                          # for printing symbols instead numbers
 
