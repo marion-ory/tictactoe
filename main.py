@@ -68,6 +68,7 @@ while turn<=9 and game==True:                                 #stop after 9 turn
   position = int(choice)-1                                    # convert in 1 to 9 because python count from 0 to 8
   if number[position] in ("X", "O"):                          # cells is already occupied
     print("Case déjà prise")
+    continue                                                  # going trough the loop
 
   number[position] = symbol                                   # for printing symbols instead numbers
 
@@ -85,12 +86,12 @@ while turn<=9 and game==True:                                 #stop after 9 turn
     for a, b, c in combo:                                                        #a, b, c going trough my loop
       if board[a] == symbol and board[b] == symbol and board[c] == symbol:       # check if 3 x cells get "X" "0" in line or column
        return True                                                               # found a winning line of X or O
-      return False                                                               # if no winning combination is found the game continues
+    return False                                                               # if no winning combination is found the game continues
 
   if winner(number, symbol):                                                     #call board & symbol
       print(f"Bravo {name_player} tu as gagné !")                                # true if winning
       game = False                                                               #and stop game
 
-  elif game and turn >= 10:                                                        #if game turn to 10
+  elif game and turn >9:                                                        #if game turn to 10
      print("Match nul !")                                                        #no winners
      game = False                                                                #end game
