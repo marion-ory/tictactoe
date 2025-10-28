@@ -43,16 +43,17 @@ turn=1                                                        # turn counter sta
 # Turn :
 
 while turn<=9 and game==True:                                 #stop after 9 turns or if game become false
-  if turn % 2 ==1:                                            #if odd turn player O play
+  if turn % 2 ==1:
+    print(f"{playerX} à ton tour !")                          #if odd turn player O play
+    name_player=playerX
+    symbol="X"
+
+
+
+  if turn % 2==0:                                             # if even turn player O play
     print(f"{playerO} à ton tour !")
     name_player= playerO
     symbol="O"
-
-
-  if turn % 2==0:                                             # if even turn player X play
-    print(f"{playerX} à ton tour !")
-    name_player=playerX
-    symbol="X"
 
   #Conditions:
                                                               # player X start to play
