@@ -57,18 +57,22 @@ while turn<=9 and game==True:                                        #stop after
       choice=int(input("Choisis ta case :"))
       if choice not in range (1, 10):                                  #make sure player choose a good cell
         print(" Entrée invalide, choisis une case (1-9) : ")
-        choice= int(input("Entre une donnée valide (1-9): "))          #loop is running until players select a good cells
-      else:
-        break                                                           # break to get out the loop
+        continue
+
+      position = int(choice)-1     # convert in 1 to 9 because python count from 0 to 8
+
+      if number[position] in ("X", "O"):
+        print("Déja occupé, choisis une autre case (0-9")
+        continue
+      break
+                                                               # break to get out the loop
 
     if turn % 2==0:                                       #-------IA make a choice in board between 1,10 --------------#
         choice = random.randint(1, 9)
-        break
-
-  position = int(choice)-1                                            # convert in 1 to 9 because python count from 0 to 8
-  if number[position] in ("X", "O"):                                  # cells is already occupied
-      print("Case déjà prise")
-      continue
+        position = int(choice)-1                                            # convert in 1 to 9 because python count from 0 to 8
+        if number[position] not in ("X", "O"):                                  # cells is already occupied
+           print(f"IA joue : {choice}")
+           break
 
   number[position] = symbol                                          # for printing symbols instead numbers
 
@@ -92,6 +96,6 @@ while turn<=9 and game==True:                                        #stop after
       print(f"Bravo {name_player} tu as gagné !")                                      # true if winning
       game = False                                                                     #and stop game
 
-  elif game and turn >9:                                                           #if game turn to 10
-     print("Match nul !")                                                             #no winners
-     game = False                                                                     #end game
+if game and turn >9:                                                           #if game turn to 10
+  print("Match nul !")                                                             #no winners
+  game = False                                                                     #end game
