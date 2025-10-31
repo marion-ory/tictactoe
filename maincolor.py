@@ -17,13 +17,16 @@ print(Back.LIGHTGREEN_EX + Fore.WHITE + "\n" * 4  +  "      ✖️ ✖️ ✖️
 
 
 
-playerX=input("\n" * 4 + Fore.CYAN + Style.BRIGHT+ "👤 Qui sera les X ?  ")                                                              # determine  players with input
-print(Back.LIGHTWHITE_EX+Fore.BLACK + Style.BRIGHT + "\n" *1 + '\033[20C' + f"  {playerX} , Tu joueras avec les ✖️ !  ")      #each player choose between X and O
+player_X=input("\n" * 4 + Fore.CYAN + Style.BRIGHT+ "👤 Qui sera les X ?  ")                                                    # determine  players with input
+print(Back.LIGHTWHITE_EX+Fore.BLACK + Style.BRIGHT + "\n" *1 + '\033[20C' + \
+      f"  {player_X} , Tu joueras avec les ✖️ !  ")                                                                            #each player choose between X and O
 
-playerO=input(Fore.GREEN + "\n" *1 +"👤 Qui sera les O ?  ")
-print(Back.LIGHTWHITE_EX+Fore.BLACK +Style.BRIGHT + "\n" *1 + '\033[20C' + f"  {playerO}, Tu joueras avec les 🅾️ !  ")
+player_O=input(Fore.GREEN + "\n" *1 +"👤 Qui sera les O ?  ")
+print(Back.LIGHTWHITE_EX+Fore.BLACK +Style.BRIGHT + "\n" *1 + '\033[20C' + \
+      f"  {player_O}, Tu joueras avec les 🅾️ !  ")
 
-print("\n" * 3 +Back.LIGHTWHITE_EX+Fore.MAGENTA +'\033[10C' + f"  🏁   À vous de jouer {playerX} & {playerO}  !    🏁  ")        #ready to play # "\n" * 3 = Line # '\033[10C' =space character
+print("\n" * 3 +Back.LIGHTWHITE_EX+Fore.MAGENTA +'\033[10C' + \
+      f"  🏁   À vous de jouer {player_X} & {player_O}  !    🏁  ")        #ready to play # "\n" * 3 = Line # '\033[10C' =space character
 
 
 
@@ -64,14 +67,14 @@ turn=1                                                                          
 
 while turn<=9 and game==True:                                                                                        #stop after 9 turns or if game become false
   if turn % 2 ==1:                                                                                                   #if odd turn player X play
-    print("\n" * 2 + Back.LIGHTWHITE_EX+ Fore.CYAN + '\033[5C'+ f" {playerX} à ton tour ! ")
-    name_player=playerX
+    print("\n" * 2 + Back.LIGHTWHITE_EX+ Fore.CYAN + '\033[5C'+ f" {player_X} à ton tour ! ")
+    name_player=player_X
     symbol="X"
 
 
   if turn % 2==0:                                                                                                    # if even turn player O play
-    print("\n" * 2 + Back.LIGHTWHITE_EX + Fore.GREEN +'\033[5C' + f" {playerO} à ton tour ! ")
-    name_player= playerO
+    print("\n" * 2 + Back.LIGHTWHITE_EX + Fore.GREEN +'\033[5C' + f" {player_O} à ton tour ! ")
+    name_player= player_O
     symbol="O"
 
   #Conditions:
@@ -109,9 +112,11 @@ while turn<=9 and game==True:                                                   
     return False                                                                                                          # if no winning combination is found the game continues
 
   if winner(number, symbol):                                                                                                        #call board & symbol
-      print(Back.RED+ Fore.WHITE +  "\n" * 2 + '\033[40C' + f" 🎉 Bravo {name_player} tu as gagné ! "+ "\n" * 2 )                   # true if winning
+      print(Back.GREEN+ Fore.WHITE +  "\n" * 2 + '\033[40C' + \
+        f" 🎉 Bravo {name_player} tu as gagné ! "+ "\n" * 2 )                                                                       # true if winning
       game = False                                                                                                                  #and stop game
 
   elif game and turn >9:                                                                                                            #if game turn to 10
-     print(Back.MAGENTA + Fore.WHITE + "\n" * 2 + '\033[40C' + " 🚩 Match nul ! 🚩 "+ "\n" * 2 )                                      #no winners
+     print(Back.MAGENTA + Fore.WHITE + "\n" * 2 + '\033[40C' + \
+       " 🚩 Match nul ! 🚩 "+ "\n" * 2 )                                                                                             #no winners
      game = False                                                                                                                   #end game

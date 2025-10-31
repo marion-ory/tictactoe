@@ -7,10 +7,10 @@ import random                                               #---------------IA p
 
 #Introduce Game:
                                                                      # Real Player play with O
-playerO=input("Qui sera les O ?")
-print(f"{playerO}, Tu joueras avec les O !")
+player_O=input("Qui sera les O ?")
+print(f"{player_O}, Tu joueras avec les O !")
 
-print(f"À vous de jouer {playerO} !")                                 #ready to play
+print(f"À vous de jouer {player_O} !")                                 #ready to play
 
 
 
@@ -41,8 +41,8 @@ turn=1                                                              # turn count
 
 while turn<=9 and game==True:                                        #stop after 9 turns or if game become false
   if turn % 2 ==1:                                                   #if odd turn player O play
-    print(f"{playerO} à ton tour !")
-    name_player= playerO
+    print(f"{player_O} à ton tour !")
+    name_player= player_O
     symbol="O"
 
 
@@ -84,7 +84,9 @@ while turn<=9 and game==True:                                        #stop after
   #Winner positions:
 
 
-  combo= [(0,1,2), (3,4,5),(6,7,8),(0,3,6), (1,4,7), (2,5,8),(0,4,8), (2,4,6)]          # all possibilities for winning
+  combo= [(0,1,2), (3,4,5),(6,7,8),
+          (0,3,6), (1,4,7), (2,5,8),
+          (0,4,8), (2,4,6)]          # all possibilities for winning
 
   def winner(board, symbol):                                                           # function to call in my loop
     for a, b, c in combo:                                                              #a, b, c going trough my loop
