@@ -80,7 +80,9 @@ while turn<=9 and game==True:                                 #stop after 9 turn
   #Winner positions:
 
 
-  combo= [(0,1,2), (3,4,5),(6,7,8),(0,3,6), (1,4,7), (2,5,8),(0,4,8), (2,4,6)]  # all possibilities for winning
+  combo= [(0,1,2), (3,4,5),(6,7,8),
+          (0,3,6), (1,4,7), (2,5,8),
+          (0,4,8), (2,4,6)]  # all possibilities for winning
 
   def winner(board, symbol):                                                     # function to call in my loop
     for a, b, c in combo:                                                        #a, b, c going trough my loop
