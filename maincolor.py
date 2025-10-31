@@ -1,11 +1,13 @@
+# Fore : change background color
+
+# Back : change color
+
+# Style : bright writing
+
+
 from colorama import init, Fore, Style, Back
-init(autoreset=True)                                          # ← réinitialise après CHAQUE print automatiquement
+init(autoreset=True)                                                                                          # ← reset after each print
 
-# Fore : permet de changer la couleur de l’arrière-plan,
-
-# Back : permet de changer la couleur de l’écriture,
-
-# Style : permet de changer la brillance de la police.
 
 
                 # 1st Part # Who's playing ? (with 2 players) Welcoming ! #
@@ -67,13 +69,15 @@ turn=1                                                                          
 
 while turn<=9 and game==True:                                                                                        #stop after 9 turns or if game become false
   if turn % 2 ==1:                                                                                                   #if odd turn player X play
-    print("\n" * 2 + Back.LIGHTWHITE_EX+ Fore.CYAN + '\033[5C'+ f" {player_X} à ton tour ! ")
+    print("\n" * 2 + Back.LIGHTWHITE_EX+ Fore.CYAN + '\033[5C' \
+          + f" {player_X} à ton tour ! ")
     name_player=player_X
     symbol="X"
 
 
   if turn % 2==0:                                                                                                    # if even turn player O play
-    print("\n" * 2 + Back.LIGHTWHITE_EX + Fore.GREEN +'\033[5C' + f" {player_O} à ton tour ! ")
+    print("\n" * 2 + Back.LIGHTWHITE_EX + Fore.GREEN +'\033[5C'\
+          + f" {player_O} à ton tour ! ")
     name_player= player_O
     symbol="O"
 
@@ -103,7 +107,9 @@ while turn<=9 and game==True:                                                   
   #Winner positions:
 
 
-  combo= [(0,1,2), (3,4,5),(6,7,8),(0,3,6), (1,4,7), (2,5,8),(0,4,8), (2,4,6)]                                            # all possibilities for winning
+  combo= [(0,1,2), (3,4,5),(6,7,8),
+          (0,3,6), (1,4,7), (2,5,8),
+          (0,4,8), (2,4,6)]                                            # all possibilities for winning
 
   def winner(board, symbol):                                                                                              # function to call in my loop
     for a, b, c in combo:                                                                                                 #a, b, c going trough my loop
