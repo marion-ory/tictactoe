@@ -1,5 +1,6 @@
+import random
 
-import random                                               #---------------IA play random in Titactoe -------------#
+            #---------------IA play random in Titactoe -------------#
 
 
 
@@ -37,6 +38,20 @@ board(number)
 game=True                                                           # true by default, as long as the game is true is running
 turn=1                                                              # turn counter start from 1
 
+
+# ---- IA function :---#
+
+def board_ia(cases, signe):
+    if signe not in ("X", "O"):                                     #return IA position (0,8)
+        return False                                                # sign is not valid
+
+    libres = [i for i in range(9) if cases[i] not in ("X", "O")]    # IA choosing free cell
+    if not libres:
+        return False                                                # no more free cell
+    position = random.choice(libres)
+    return position                                                 #sending position
+
+
 # Turn :
 
 while turn<=9 and game==True:                                        #stop after 9 turns or if game become false
@@ -46,33 +61,35 @@ while turn<=9 and game==True:                                        #stop after
     symbol="O"
 
 
-  if turn % 2==0:                                       #------------IA is playing in even round-----------#
-    name_player="ia"
-    symbol="X"                                          #------------IA play with "X"----------------------#
+  if turn % 2==0:                                                    # if even turn  IA is playing
+    name_player = "ia"
+    symbol = "X"
+    position = board_ia(number, symbol)
+    if position is False:
+        print("Erreur")                                              #error message if board is full
+        game = False                                                  # end of game
+        break                                                         #get out game
+    print(f"IA joue : {position + 1}")
 
   #Conditions:
                                                                        # player X start to play
-  while True:
-    if turn %2==1:
-      choice=int(input("Choisis ta case :"))
-      if choice not in range (1, 10):                                  #make sure player choose a good cell
-        print(" Entrée invalide, choisis une case (1-9) : ")
-        continue
+  if turn % 2 == 1:                                                   # if it's the human player's turn
+      while True:                                                     # ask until a valid move
+          choice=int(input("Choisis ta case :"))
+          if choice not in range (1, 10):                             #make sure player choose a good cell
+              print(" Entrée invalide, choisis une case (1-9) : ")
+              continue
 
-      position = int(choice)-1     # convert in 1 to 9 because python count from 0 to 8
+          position = int(choice)-1                                   # convert in 1 to 9 because python count from 0 to 8
 
-      if number[position] in ("X", "O"):
-        print("Déja occupé, choisis une autre case (0-9")
-        continue
-      break
-                                                               # break to get out the loop
+          if number[position] in ("X", "O"):
+              print("Déja occupé, choisis une autre case (1-9)")
+              continue
+          break                                                        # break to get out the loop
 
-    if turn % 2==0:                                       #-------IA make a choice in board between 1,10 --------------#
-        choice = random.randint(1, 9)
-        position = int(choice)-1                                            # convert in 1 to 9 because python count from 0 to 8
-        if number[position] not in ("X", "O"):                                  # cells is already occupied
-           print(f"IA joue : {choice}")
-           break
+  if turn % 2 == 0:                                                    # if it's IA's turn
+      pass                                                             # IA already played using board_ia()
+
 
   number[position] = symbol                                          # for printing symbols instead numbers
 
@@ -86,18 +103,18 @@ while turn<=9 and game==True:                                        #stop after
 
   combo= [(0,1,2), (3,4,5),(6,7,8),
           (0,3,6), (1,4,7), (2,5,8),
-          (0,4,8), (2,4,6)]          # all possibilities for winning
+          (0,4,8), (2,4,6)]                                                            # all possibilities for winning
 
   def winner(board, symbol):                                                           # function to call in my loop
     for a, b, c in combo:                                                              #a, b, c going trough my loop
       if board[a] == symbol and board[b] == symbol and board[c] == symbol:             # check if 3 x cells get "X" "0" in line or column
        return True                                                                     # found a winning line of X or O
-    return False                                                                     # if no winning combination is found the game continues
+    return False                                                                       # if no winning combination is found the game continues
 
   if winner(number, symbol):                                                           #call board & symbol
       print(f"Bravo {name_player} tu as gagné !")                                      # true if winning
       game = False                                                                     #and stop game
 
-if game and turn >9:                                                           #if game turn to 10
-  print("Match nul !")                                                             #no winners
-  game = False                                                                     #end game
+if game and turn >9:                                                                   #if game turn to 10
+  print("Match nul !")                                                                 #no winners
+  game = False                                                                         #end game
