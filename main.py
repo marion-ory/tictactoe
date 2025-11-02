@@ -65,7 +65,7 @@ while turn<=9 and game==True:                                 #stop after 9 turn
       break                                                   # break to get out the loop
 
 
-  position = int(choice)-1                                    # convert in 1 to 9 because python count from 0 to 8
+  position = int(choice)-1                                    # change string to int - convert in 1 to 9 because python count from 0 to 8
   if number[position] in ("X", "O"):                          # cells is already occupied
     print("Case déjà prise")
     continue                                                  # going trough the loop
