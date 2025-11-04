@@ -90,8 +90,8 @@ while turn <= 9 and game == True:                                        #stop a
     if turn % 2 == 1:                                                   # if it's the human player's turn
         while True:                                                     # ask until a valid move
             try:
-                choice = int(input("Choisis ta case :"))
-            except ValueError:
+                choice = int(input("Choisis ta case :"))                #convert string into int
+            except ValueError:                                          #catch error when we can't convert in number
                 print(" Entrée invalide, choisis une case (1-9) : ")
                 continue
             if choice not in range(1, 10):                             #make sure player choose a good cell
@@ -122,5 +122,5 @@ while turn <= 9 and game == True:                                        #stop a
 if game and turn > 9:                                                                   #if game turn to 10
     print("Match nul !")                                                                 #no winners
     game = False                                                                         #end game
-import random
+
 
