@@ -5,7 +5,7 @@ def check_nul():
   print("Match nul")
 
 def print_winner():
-  global win
+  global win                                                        #global pcq win est déclarer en dehors de la fonction
   if win is False:
     win = True
 
